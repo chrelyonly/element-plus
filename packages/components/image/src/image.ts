@@ -6,6 +6,7 @@ import {
 } from '@element-plus/utils'
 
 import type { ExtractPropTypes } from 'vue'
+import type Image from './image.vue'
 
 export const imageProps = buildProps({
   /**
@@ -89,6 +90,33 @@ export const imageProps = buildProps({
     type: Number,
     default: 1.2,
   },
+  /**
+   * @description the min scale of the image viewer zoom event.
+   */
+  minScale: {
+    type: Number,
+    default: 0.2,
+  },
+  /**
+   * @description the max scale of the image viewer zoom event.
+   */
+  maxScale: {
+    type: Number,
+    default: 7,
+  },
+  /**
+   * @description show preview image progress content.
+   */
+  showProgress: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description set HTML attribute: crossorigin.
+   */
+  crossorigin: {
+    type: definePropType<'anonymous' | 'use-credentials' | ''>(String),
+  },
 } as const)
 export type ImageProps = ExtractPropTypes<typeof imageProps>
 
@@ -100,3 +128,4 @@ export const imageEmits = {
   show: () => true,
 }
 export type ImageEmits = typeof imageEmits
+export type ImageInstance = InstanceType<typeof Image>
